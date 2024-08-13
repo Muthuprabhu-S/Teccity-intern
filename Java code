@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class VegetablePriceCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user to enter vegetable name
+        System.out.print("Enter the name of the vegetable: ");
+        String vegetableName = scanner.nextLine().toLowerCase();
+
+        // Prompt user to enter weight in grams
+        System.out.print("Enter the weight of the vegetable in grams: ");
+        int weightInGrams = scanner.nextInt();
+
+        // Initialize price per gram for different vegetables
+        double pricePerGram;
+
+        // Determine price per gram based on vegetable name
+        switch (vegetableName) {
+            case "carrot":
+                pricePerGram = 0.02; // $0.02 per gram
+                break;
+            case "potato":
+                pricePerGram = 0.01; // $0.01 per gram
+                break;
+            case "tomato":
+                pricePerGram = 0.03; // $0.03 per gram
+                break;
+            case "onion":
+                pricePerGram = 0.015; // $0.015 per gram
+                break;
+            default:
+                pricePerGram = 0; // Default price for unknown vegetables
+                System.out.println("Vegetable not recognized.");
+                break;
+        }
+
+        // Calculate the total price
+        double totalPrice = pricePerGram * weightInGrams;
+
+        // Output the result
+        if (totalPrice > 0) {
+            System.out.println("The total price for " + weightInGrams + " grams of " + vegetableName + " is $" + totalPrice);
+        } else {
+            System.out.println("Price could not be calculated.");
+        }
+
+        scanner.close();
+    }
+}
